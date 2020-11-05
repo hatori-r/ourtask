@@ -1,0 +1,389 @@
+* {
+  // background: #f5f5f5;
+  margin: 0 auto;
+  font-size: 18px;
+  color: #333;
+  font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  background: #f5f5f5;
+}
+
+body {
+  background: #f5f5f5;
+  // min-height: 100vh;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  // padding-bottom: 100px;
+  margin: 0 auto;
+  overflow: auto;
+  position: relative;
+}
+
+.title-bar {
+  background: #41B883;
+  height: 80px;
+  width: 100%;
+  color: #f5f5f5;
+  line-height: 80px;
+}
+
+.title-box {
+  height: 100%;
+  width: calc(100% - 200px);
+  max-width: 880px;
+  min-width: 820px;
+  margin: 0 auto;
+}
+
+.title-box-inner {
+  margin: 0 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.our-task {
+  color: #f5f5f5;
+  font-weight: bold;
+  font-size: 35px;
+  letter-spacing: 0.02em;
+}
+
+.our-task-icon {
+  display: none;
+  width: 80px;
+  .fa-share-alt {
+    display: block;
+    height: 80px;
+    width: 80px;
+    font-size: 40px;
+    color: #f5f5f5;
+    text-align: center;
+    line-height: 80px;
+    cursor: pointer;
+  }
+}
+
+.user-sign-in {
+  width: 220px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.new,
+.log-in,
+.log-out {
+  height: 100%;
+  width: 100px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #f5f5f5;
+  display: block;
+  letter-spacing: 0.02em;
+}
+
+.new:hover {
+  color: #35495E;
+}
+
+.log-in:hover {
+  color: #35495E;
+}
+
+.log-out:hover {
+  color: #35495E;
+}
+
+#up {
+  padding-left: 20px;
+}
+
+#current_user {
+  width: 120px;
+}
+
+.new_task {
+  background: #64cffa;
+  height: 60px;
+  width: 100%;
+  border: 1px solid #bbb;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-size: 22px;
+  text-shadow: 1px 1px 5px #7e7e7e;
+  color: #f5f5f5;
+  font-family: "M PLUS Rounded 1c";
+  cursor: pointer;
+  position: fixed;
+  z-index: 1;
+  transition: background 0.2s;
+  &:hover {
+    background: #7cd5f8;
+    transition: background 0.2s;
+  }
+}
+
+.update_task {
+  background: #f5df64f5;
+  height: 60px;
+  width: 100%;
+  border: 1px solid #bbb;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-size: 22px;
+  text-shadow: 1px 1px 5px #7e7e7e;
+  color: #f5f5f5;
+  font-family: "M PLUS Rounded 1c";
+  cursor: pointer;
+  position: fixed;
+  margin: auto;
+  z-index: 1;
+  transition: background 0.2s;
+  &:hover {
+    background: #ece1a2ee;
+    transition: background 0.2s;
+  }
+}
+
+.delete_task {
+  background: #afafaf;
+  height: 60px;
+  width: 100%;
+  border: 1px solid #bbb;
+  line-height: 60px;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-size: 22px;
+  text-shadow: 1px 1px 5px #5c5c5c;
+  color: #f5f5f5;
+  font-family: "M PLUS Rounded 1c";
+  cursor: pointer;
+  position: fixed;
+  z-index: 1;
+  transition: background 0.2s;
+  &:hover {
+    background: #bbb;
+    transition: background 0.2s;
+  }
+}
+
+.pagination {
+  height: 60px;
+  text-align: center;
+  margin-bottom: 20px;
+  span {
+    background: #fff;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    border-radius: 3px;
+    margin-top: 5px;
+    line-height: 50px;
+    font-size: 18px;
+    font-family: "M PLUS Rounded 1c";
+    a {
+      height: 100%;
+      width: 100%;
+      display: block;
+      line-height: 50px;
+      font-size: 16px;
+      color: #555;
+      font-family: "M PLUS Rounded 1c";
+    }
+  }
+  .first {
+    width: 60px;
+    border: 1px solid #ddd;
+    &:hover {
+      background: #f3f3f3;
+    }
+  }
+  .prev {
+    border: 1px solid #ddd;
+    &:hover {
+      background: #f3f3f3;
+    }
+  }
+  .page {
+    border: 1px solid #ddd;
+    &:hover {
+      background: #f3f3f3;
+    }
+  }
+  .next {
+    border: 1px solid #ddd;
+    &:hover {
+      background: #f3f3f3;
+    }
+  }
+  .last {
+    width: 60px;
+    border: 1px solid #ddd;  
+    &:hover {
+      background: #f3f3f3;
+    }
+  }
+  .current {
+    background: #3498db;
+    color: #fff;
+    &:hover {
+      background: #3498db;
+    }
+  }
+}
+
+footer {
+  background: #35495E;
+  height: 56px;
+  width: 100%;
+  margin-top: 50px;
+  // border-top: 0.5px solid #bbb;
+  font-size: 12px;
+  color: #f5f5f5;
+  line-height: 56px;
+  text-align: center;
+  // position: absolute;
+  // bottom: 0;
+  // z-index: 2;
+}
+
+.copyright {
+  font-size: 20px;
+  font-weight: bold;
+  color: #41B883;
+}
+
+.administrator-login {
+  background: #32cd32;
+  height: 140px;
+  width: 140px;
+  position: fixed;
+  top: 40%;
+  right: 25px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px #555;
+  &__btn {
+    height: 140px;
+    width: 140px;
+    border-radius: 30px;
+    // display: block;
+    display: grid;
+    place-items: center;
+    p {
+      height: 18px;
+      font-size: 18px;
+      margin-top: 30px;
+      line-height: 16px;
+      color: #fff;
+      font-weight: bold;
+    }
+    .fa-key {
+      display: block;
+      margin-bottom: 20px;
+      font-size: 30px;
+      color: #ffd700;
+    }
+  }
+}
+
+.appear-info {
+  display: none;
+  background: #1dd7ff;
+  width: 160px;
+  position: fixed;
+  bottom: 21.5%;
+  right: 120px;
+  border-radius: 50px;
+  box-shadow: 0 0 2px #ddd;
+  &__text {
+    height: 50px;
+    font-size: 17px;
+    color: #fff;
+    font-family: "M PLUS Rounded 1c","メイリオ";
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: 0.05em;
+  }
+}
+
+.appear-share-task {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20%;
+  right: 33px;
+  &__btn {
+    background: #fff;
+    display: block;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #ccc;
+    transition: all 0.1s;
+    &:hover {
+      box-shadow: 0 0 10px #ccc;
+      transition: all 0.2s;
+    }
+    .fa-share-alt {
+      height: 80px;
+      width: 80px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-size: 40px;
+      color: #1dd7ff;
+    }
+  }
+}
+
+.icon-box {
+  background: #3498db;
+  height: 70px;
+  width: 70px;
+  border-radius: 7px;
+  position: fixed;
+  bottom: 70px;
+  right: 40px;
+  cursor: pointer;
+  p {
+    display: none;
+    position: absolute;
+    bottom: 48px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    height: 14px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 14px;
+  }
+  .fa-chevron-up {
+    height: 52px;
+    position: absolute;
+    top: 25%;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    font-size: 40px;
+    color: #efefef;
+    text-align: center;
+    line-height: 40px;
+    transition: all 0.1s;
+    &:hover {
+      transition: all 0.1s;
+      text-shadow: 0 0 5px #ccc;
+    }
+  }
+}

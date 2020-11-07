@@ -1,11 +1,41 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Ourtask
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title OurTask
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = favicon_link_tag "favicon.ico"
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=UA-170074285-2"}
+    :javascript
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-170074285-2');
+    %link{href: "https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c", rel: "stylesheet"}/
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"}
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"}
+    %script{src: "https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"}
   %body
+    .overlay
+      .btn_area
+        .btn_area__top
+          %h1
+            ようこそ！
+          %p
+            our taskではあなたのタスクをシェアできます。
+            %br/
+            %br/
+            登録をしてみんなにタスクをシェアしてみましょう！
+        .btn_area__mid
+          = image_tag asset_path("/images/share_task.png"), style: "height: 220px; width: 260px;", class: "share_task"
+          
+        .btn_area__low
+          -# = link_to "our taskを始める", new_user_registration_path, class: "first-task"
+          %button 閉じる
+    = render "layouts/title_ber"
+    = render "layouts/notification"
     = yield
+= render "layouts/footer"

@@ -1,0 +1,172 @@
+.our-task-icon {
+  #hamburger {
+    position: absolute;
+    left: -50vw
+  }
+  .hamburger-open {
+    display: none;
+  }
+  aside {
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ccc;
+    .hamburger-close {
+      display: none;
+      height: 79px;
+      width: 100%;
+      .fa-bars {
+        height: 100%;
+        width: calc(100% - 50px);
+        padding-left: 50px;
+        color: #333;
+        font-size: 30px;
+        text-align: left;
+        line-height: 80px;
+        cursor: pointer;
+      }
+    }
+    nav {
+      width: 100%;
+      .menu-list {
+        width: 100%;
+        text-align: center;
+        &__toppage {
+          width: 100%;
+          display: block;
+          font-weight: bold;
+          border-top: 1px solid #ddd;
+        }
+        &__mypage {
+          width: 100%;
+          display: block;
+          font-weight: bold;
+          border-top: 1px solid #ddd;
+        }
+        &__share-task {
+          width: 100%;
+          display: block;
+          font-weight: bold;
+          border-top: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+        }
+        &__logout {
+          width: 100%;
+          display: block;
+          font-weight: bold;
+          margin-top: 80px;
+        }
+        &__login {
+          width: 100%;
+          display: block;
+          font-weight: bold;
+          border-top: 1px solid #ddd;
+        }
+        &__signin {
+          width: 100%;
+          display: block;
+          font-weight: bold;
+          border-top: 1px solid #ddd;
+          border-bottom: 1px solid #ddd;
+        }
+        .media-screen-footer {
+          height: 100%;
+          margin-top: 20px;
+          &__top {
+            height: 35px;
+            font-size: 14px;
+            color: #555;
+            line-height: 35px;
+            span {
+              font-size: 18px;
+            }
+          }
+          &__low {
+            height: 35px;
+            font-size: 14px;
+            color: #555;
+            line-height: 35px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .title-bar {
+    position: fixed;
+    top: 0;
+    z-index: 98;
+  }
+  .tasks,
+  .users {
+    padding-top: 100px;
+  }
+  .first-wapper {
+    padding-top: 80px;
+    margin-bottom: -80px;
+  }
+  .users {
+    padding-top: 80px;
+  }
+  .user-tasks,
+  .like-tasks {
+    padding-top: 0;
+    margin-top: 20px;
+  }
+  .container,
+  .welcome,
+  .notice,
+  .alert,
+  .guest_alert,
+  .new_task,
+  .update_task,
+  .delete_task,
+  .good_task,
+  .cancel_good {
+    top: 80px;
+  }
+  .comments-container {
+    top: 0;
+    height: 300px;
+    .comments {
+      height: 230px;
+    }
+  }
+  .contents {
+    padding-bottom: 80px;
+  }
+  .our-task,
+  footer {
+    display: none;
+  }
+  .pagination,
+  .top-page {
+    margin-bottom: 80px;
+  }
+  .follow-list {
+    margin-bottom: 160px;
+  }
+  .our-task-icon {
+    display: block;
+    input[type="checkbox"]:checked ~ aside {
+      left: 0;
+    }
+    .hamburger-open {
+      position: absolute;
+      display: block;
+    }
+    aside {
+      position: fixed;
+      left: -255px;
+      height: 100%;
+      transition:  all 0.2s;
+      background: #fff;
+      z-index: 99;
+      .hamburger-close {
+        display: block;
+      }
+    }
+  }
+}

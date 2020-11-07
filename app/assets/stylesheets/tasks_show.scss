@@ -1,0 +1,56 @@
+.other-box {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.other-box ul {
+  display: flex;
+}
+
+.other-box ul li {
+  width: 50px;
+  padding-top: 5px;
+}
+
+.fa-thumbs-up,
+.fa-comment-dots {
+  height: 100%;
+  width: 100%;
+  font-size: 25px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.ask-for-login {
+  display: flex;
+  justify-content: center;
+  // &__upper {
+  // }
+  &__lower {
+    margin-left: 10px;
+    i {
+      font-size: 24px;
+    }
+  }
+}
+
+.login-form {
+  display: flex;
+  width: 60%;
+  margin: 0 auto;
+  .signin_from_show,
+  .login_from_show {
+    display: block;
+    background: #35495E;
+    height: 40px;
+    width: 120px;
+    display: block;
+    border-radius: 50px;
+    margin: 0 auto;
+    margin-top: 10px;
+    color: #f5f5f5;
+    text-align: center;
+    line-height: 40px;
+  }
+}

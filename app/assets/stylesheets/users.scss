@@ -1,3 +1,522 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.users {
+  height: 100%;
+  min-height: 100vh;
+  width: calc(100% - 200px);
+  max-width: 880px;
+  min-width: 810px;
+  margin: 0 auto;
+  margin-top: 65px;
+  &__top {
+    height: 380px;
+    width: 100%;
+    .user-info {
+      background: #fff;
+      height: 100%;
+      border-radius: 7px;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 2px #aaa;
+      display: flex;
+      &__left {
+        height: 100%;
+        width: 250px;
+        .profile-image {
+          height: 230px;
+          width: 230px;
+          margin: 0 auto;
+          margin-top: 70px;
+          display: grid;
+          place-items: center;
+          img {
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+          }
+          i {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            line-height: 230px;
+            font-size: 8rem;
+            color: #ddd;
+          }
+        }
+      }
+      &__center {
+        height: 100%;
+        width: 30px;
+      }
+      &__right {
+        height: 100%;
+        flex: 1;
+        .info-right {
+          &__name {
+            height: 48px;
+            margin-top: 30px;
+            display: flex;
+            .name {
+              flex: 1;
+              a {
+                display: block;
+                height: 100%;
+                padding-left: 10px;
+                line-height: 48px;
+                font-size: 1.8em;
+              }
+            }
+            .edit {
+              width: 330px;
+              line-height: 50px;
+              a {
+                height: 100%;
+                width: 160px;
+                margin: 0;
+                display: flex;
+              }
+              .fa-user-cog {
+                height: 100%;
+                width: 30px;
+                margin: 0;
+                font-size: 18px;
+                text-align: center;
+                line-height: 50px;
+                display: block;
+              }
+              p {
+                height: 100%;
+                width: 130px;
+                margin: 0;
+                font-size: 16px;
+              }
+              .follow-now {
+                background: #fff;
+                height: 40px;
+                width: 150px;
+                border-radius: 7px;
+                border: 1px solid #ccc;
+                margin-top: 5px;
+                margin-left: 0;
+                margin-right: auto;
+                display: flex;
+                outline: none;
+                cursor: pointer;
+                transition: all 0.2s;
+                &:hover {
+                  transition: all 0.2s;
+                  background: #efefef;
+                }
+                p {
+                  font-weight: bold;
+                  line-height: 37px;
+                  flex: 1;
+                }
+                .fa-user-check {
+                  height: 100%;
+                  width: 40px;
+                  line-height: 37px;
+                  color: #0095f6;
+                  display: block;
+                }
+              }
+              .following {
+                background: #fff;
+                height: 40px;
+                width: 150px;
+                border-radius: 7px;
+                border: 1px solid #ccc;
+                margin-top: 5px;
+                margin-left: 0;
+                margin-right: auto;
+                display: flex;
+                outline: none;
+                cursor: pointer;
+                transition: all 0.2s;
+                &:hover {
+                  transition: all 0.2s;
+                  background: #efefef;
+                }
+                p {
+                  font-weight: bold;
+                  line-height: 37px;
+                  flex: 1;
+                }
+                .fa-user-plus {
+                  height: 100%;
+                  width: 35px;
+                  padding-right: 3px;
+                  line-height: 37px;
+                  display: block;
+                }
+              }
+              .following {
+                background: #fff;
+                height: 40px;
+                width: 150px;
+                border-radius: 7px;
+                border: 1px solid #ccc;
+                margin-top: 5px;
+                margin-left: 0;
+                margin-right: auto;
+                display: flex;
+                outline: none;
+                cursor: pointer;
+                transition: all 0.2s;
+                &:hover {
+                  transition: all 0.2s;
+                  background: #efefef;
+                }
+                a {
+                  p {
+                    width: 36px;
+                  font-weight: bold;
+                  line-height: 37px;
+                  }
+                  .fa-user-plus {
+                    height: 100%;
+                    width: 35px;
+                    padding-right: 3px;
+                    line-height: 37px;
+                    display: block;
+                  }
+                }
+              }
+            }
+          }
+          &__follow-info {
+            height: 18px;
+            .user-follower {
+              height: 100%;
+              width: 197px;
+              display: flex;
+              .fa-check-circle {
+                padding: 0 3px;
+                color: #32cd32;
+              }
+              p {
+                flex: 1;
+                // font-family: "Font Awesome 5 Free","メイリオ",Meiryo,sans-serif;
+                font-family: "M PLUS Rounded 1c","メイリオ",Meiryo,sans-serif;
+                font-size: 14px;
+                font-weight: bold;
+              }
+            }
+          }
+          &__sns {
+            height: 40px;
+            margin-top: 5px;
+            display: flex;
+            i {
+              display: block;
+              text-align: center;
+              line-height: 40px;
+            }
+            .twitter {
+              width: 50px;
+              .fa-twitter {
+                color: #00acee;
+                font-size: 30px;
+                transition: text-shadow 0.1s;
+                &:hover {
+                  text-shadow: 1px 1px 5px #aaa;
+                  transition: text-shadow 0.1s;
+                }
+              }
+              .none {
+                color: #eee;
+                font-size: 30px;
+                &:hover {
+                  text-shadow: none;
+                }
+              }
+            }
+            .facebook {
+              width: 50px;
+              display: grid;
+              place-items: center;
+              .fa-facebook {
+                height: 30px;
+                width: 30px;
+                border-radius: 50%;
+                color: #1877f2;
+                font-size: 30px;
+                line-height: 30px;
+                transition: box-shadow 0.1s;
+                &:hover {
+                  box-shadow: 0 0 7px #aaa;
+                  transition: box-shadow 0.1s;
+                }
+              }
+              .none {
+                color: #eee;
+                font-size: 30px;
+                &:hover {
+                  box-shadow: none;
+                }
+              }
+            }
+            .instagram {
+              width: 50px;
+              .fa-instagram {
+                height: 30px;
+                width: 30px;
+                margin: 5px 10px;
+                background: linear-gradient(45deg, rgba(254,212,117,1) 0%,rgba(229,61,93,1) 50%,rgba(194,49,134,1) 70%,rgba(156,56,187,1) 100%);
+                border-radius: 7px;
+                color: #fff;
+                font-size: 26px;
+                line-height: 30px;
+                display: block;
+                font-weight: 400;
+                text-align: center;
+                transition: box-shadow 0.1s;
+                &:hover {
+                  box-shadow: 1px 1px 5px #aaa;
+                  transition: box-shadow 0.1s;
+                }
+              }
+              .none {
+                background: #eee;
+                color: #fff;
+                font-size: 30px;
+                &:hover {
+                  box-shadow: none;
+                }
+              }
+            }
+            .mysite-logo {
+              width: 50px;
+              .fa-home {
+                padding-right: 5px;
+                font-size: 20px;
+                color: #555;
+                text-align: right;
+              }
+              .none {
+                color: #eee;
+              }
+            }
+            .mysite {
+              a {
+                flex: 1;
+                display: block;
+                font-size: 16px;
+                line-height: 40px;
+              }
+              .nil_date {
+                font-size: 16px;
+                font-style: italic;
+                color: #ccc;
+                line-height: 40px;
+              }
+            }
+          }
+          &__follow {
+            height: 50px;
+            display: flex;
+            .task-count {
+              flex: 1;
+              text-align: center;
+              line-height: 50px;
+              a {
+                font-size: 16px;
+              }
+            }
+            .following {
+              flex: 1;
+              text-align: left;
+              line-height: 50px;
+              font-size: 16px;
+              a {
+                font-size: 16px;
+              }
+            }
+            .follower {
+              flex: 1;
+              text-align: left;
+              line-height: 50px;
+              font-size: 16px;
+              a {
+                font-size: 16px;
+              }
+            }
+          }
+          &__profile {
+            .introduce {
+              height: 160px;
+              padding: 2px 10px;
+              overflow: auto;
+              P {
+                font-family: "Font Awesome 5 Free","メイリオ",Meiryo,sans-serif;
+                font-size: 15px;
+              }
+              .nil_date {
+                font-size: 16px;
+                font-style: italic;
+                color: #ccc;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &__low {
+    width: 100%;
+    .select-tabs {
+      height: 50px;
+      .inner-tabs {
+        height: 50px;
+        border-radius: 7px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 2px #aaa;
+        margin-top: 20px;
+        background: #fff;
+        text-align: center;
+        line-height: 50px;
+        display: flex;
+        .task-tab {
+          height: 100%;
+          border-radius: 7px;
+          flex: 1;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.2s;
+          &:hover {
+            text-shadow: 1px 1px 5px #ccc;
+            font-size: 18.5px;
+            transition: all 0.2s;
+          }
+        }
+        .like-tab {
+          height: 100%;
+          border-radius: 7px;
+          flex: 1;
+          font-weight: bold;
+          cursor: pointer;
+          transition: all 0.2s;
+          &:hover {
+            text-shadow: 1px 1px 5px #ccc;
+            font-size: 18.5px;
+            transition: all 0.2s;
+          }
+        }
+      }
+    }
+    .user-tasks {
+      .task-zero {
+        height: 100px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        line-height: 100px;
+          p {
+            font-weight: bold;
+            font-size: 20px;
+            font-family: "M PLUS Rounded 1c","メイリオ",Meiryo,sans-serif;
+          }
+          .fa-tasks {
+            width: 50px;
+            margin: 0;
+            line-height: 100px;
+            text-align: center;
+            font-size: 24px;
+          }
+        }
+        .post-task {
+          &__btn {
+            display: block;
+            background: #35495E;
+            height: 60px;
+            width: 280px;
+            border-radius: 50px;
+          margin: 0 auto;
+          color: #f5f5f5;
+          font-family: "M PLUS Rounded 1c","メイリオ",Meiryo,sans-serif;
+          font-weight: bold;
+          line-height: 60px;
+          text-align: center;
+          transition: all 0.2s;
+          &:hover {
+            background: #374c63;
+            font-size: 18.5px;
+            box-shadow: 0 0 10px 3px silver;
+            transition: all 0.2s;
+          }
+        }
+      }
+    }
+    .like-tasks {
+      .like-zero {
+        height: 100px;
+        width: 100%;
+        // padding-top: 20px;
+        display: flex;
+        justify-content: center;
+        line-height: 100px;
+        p {
+          font-weight: bold;
+          font-size: 20px;
+          font-family: "M PLUS Rounded 1c","メイリオ",Meiryo,sans-serif;
+        }
+        .fa-tasks {
+          width: 50px;
+          margin: 0;
+          line-height: 100px;
+          text-align: center;
+          font-size: 24px;
+        }
+      }
+      .watching-tasks {
+        &__btn {
+          display: block;
+          background: #35495E;
+          height: 60px;
+          width: 280px;
+          border-radius: 50px;
+          margin: 0 auto;
+          color: #f5f5f5;
+          font-family: "M PLUS Rounded 1c","メイリオ",Meiryo,sans-serif;
+          font-weight: bold;
+          line-height: 60px;
+          text-align: center;
+          transition: all 0.2s;
+          &:hover {
+            background: #374c63;
+            font-size: 18.5px;
+            box-shadow: 0 0 10px 3px silver;
+            transition: all 0.2s;
+          }
+        }
+      }
+    }
+    .tabContents {
+      display: none;
+    }
+    .tabContents.active {
+      display: block;
+    }
+    .top-page {
+      .return-top {
+        display: block;
+        background: #35495E;
+        height: 60px;
+        width: 280px;
+        border-radius: 50px;
+        margin: 0 auto;
+        color: #f5f5f5;
+        font-family: "M PLUS Rounded 1c","メイリオ",Meiryo,sans-serif;
+        font-weight: bold;
+        line-height: 60px;
+        text-align: center;
+        transition: all 0.2s;
+        &:hover {
+          background: #374c63;
+          font-size: 18.5px;
+          box-shadow: 0 0 10px 3px silver;
+          transition: all 0.2s;
+        }
+      }
+    }
+  }
+}

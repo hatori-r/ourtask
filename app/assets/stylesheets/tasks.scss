@@ -1,3 +1,455 @@
-// Place all the styles related to the tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.tasks {
+  height: 100%;
+  min-height: 100vh;
+  width: calc(100% - 200px);
+  max-width: 880px;
+  min-width: 810px;
+  margin: 0 auto;
+  padding-top: 20px;
+  .main-table {
+    ul {
+      height: 60px;
+      padding-top: 60px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-around;
+      li {
+        width: 300px;
+        .post-task,
+        .my-page {
+          display: block;
+          background: #35495E;
+          height: 60px;
+          width: 280px;
+          border-radius: 50px;
+          margin: 0 auto;
+          color: #f5f5f5;
+          font-weight: bold;
+          font-family: "M PLUS Rounded 1c","メイリオ",Meiryo,sans-serif;
+          line-height: 60px;
+          text-align: center;
+          transition: all 0.2s;
+          &:hover {
+            background: #374c63;
+            font-weight: bold;
+            box-shadow: 0 0 10px 3px silver;
+            transition: all 0.2s;
+          }
+        }
+      }
+    }
+  }
+  .search-form {
+    width: 675px;
+    margin: 0 auto;
+    .search-inner {
+      margin: 50px 0;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      .search-input{ 
+        display: block;
+        height: 50px;
+        width: 100%;
+        padding: 0 50px;
+        border-radius: 50px;
+        border: 1px solid #dfe1e5;
+        outline: none;
+        color: #757575;
+        box-shadow: 0 0 2px #bebebe;
+      }
+      .search-btn {
+        height: 50px;
+        width: 50px;
+        background: none;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 20px;
+        outline: none;
+        i {
+          display: block;
+          height: 100%;
+          width: 100%;
+          color: #757575;
+          line-height: 50px;
+        }
+      }
+    }
+  }
+  .tasks-table {
+    width: 81%;
+    background: #fff;
+    border: 0.5px solid #ddd;
+    margin-bottom: 80px;
+    box-shadow: 0 0 2px #ccc;
+    .task-user {
+      height: 100%;
+      border-bottom: 0.5px solid #ddd;
+      ul {
+        height: 100%;
+        display: flex;
+        position: relative;
+        li {
+          height: 100%;
+          .image-a {
+            display: block;
+            height: 100%;
+            padding: 5px;
+            margin-left: 30px;
+            .user-icon {
+              display: block;
+              height: 30px;
+              width: 30px;
+              border-radius: 50%;
+            }
+          }
+          .icon-a {
+            display: block;
+            margin-left: 30px;
+            .fa-user-circle {
+              width: 40px;
+              color: #ddd;
+              font-size: 24px;
+              text-align: center;
+              line-height: 41px;
+            }
+          }
+          .user-name {
+            display: block;
+            height: 40px;
+            padding: 0 10px;
+            font-size: 18px;
+            letter-spacing: 0.05em;
+            line-height: 40px;
+          }
+        }
+        .details {
+          width: 41px;
+          position: absolute;
+          top: 0;
+          right: 53px;
+          a {
+            color: #888;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 41px;
+            text-align: center;
+            display: block;
+            &:hover {
+              color: #35495E;
+              font-weight: bold;
+              text-shadow: 1px 1px 5px #aaa;
+              transition: text-shadow 0.1s;
+            }
+          }
+        }
+        .details-none {
+          color: #f1f1f1;
+          font-size: 20px;
+          font-weight: bold;
+          line-height: 41px;
+          text-align: center;
+          display: block;
+          &:hover {
+            cursor: default;
+          }
+        }
+      }
+    }
+    .tasks-box {
+      height: 160px;
+      display: flex;
+      justify-content: space-between;
+      .limit-box {
+        height: 100%;
+        width: 190px;
+        border-right: 0.5px solid #ddd;
+        .limit-upper {
+          .limit {
+            height: 40px;
+            font-size: 16px;
+            line-height: 40px;
+            text-align: center;
+            letter-spacing: 0.05em;
+          }
+        }
+        .limit-lower {
+          .limit-date {
+            height: 100%;
+            border-top: 0.5px solid #ddd;
+            line-height: 120px;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+          }
+        }
+      }
+      .task-box {
+        flex: 1;
+        .task-upper {
+          .task {
+            height: 40px;
+            font-size: 16px;
+            line-height: 40px;
+            text-align: center;
+            letter-spacing: 0.05em;
+          }
+          .task-data {
+            height: 120px;
+            font-size: 20px;
+            border-top: 0.5px solid #ddd;
+            position: relative;
+            .task-data-inner {
+              font-weight: bold;
+              height: 82px;
+              width: 90%;
+              position: absolute;
+              left: 25px;
+              top: 10px;
+              overflow: auto;
+            }
+            .notification {
+              height: 15px;
+              position: absolute;
+              left: 10px;
+              bottom: 7px;
+              display: flex;
+              &__likes {
+                height: 100%;
+                a {
+                  height: 100%;
+                  display: flex;
+                  margin-right: 10px;
+                  line-height: 15px;
+                  .fa-thumbs-up {
+                    background: #e0245e;
+                    height: 22px;
+                    width: 22px;
+                    color: #fff;
+                    font-weight: bold;
+                    padding-left: 1px;
+                    border-radius: 50%;
+                    margin-top: -5px;
+                    font-size: 14px;
+                    line-height: 22px;
+                    box-shadow: 0 0 3px #aaa;
+                  }
+                  .count {
+                    width: 30px;
+                    padding-left: 5px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: #777;
+                    text-align: left;
+                  }
+                }
+                
+              }
+              &__comments {
+                height: 100%;
+                a {
+                  height: 100%;
+                  display: flex;
+                  line-height: 15px;
+                  .fa-comment-dots {
+                    background: #64cffa;
+                    height: 22px;
+                    width: 22px;
+                    padding-left: 1px;
+                    border-radius: 50%;
+                    margin-top: -5px;
+                    font-weight: bold;
+                    color: #fff;
+                    font-size: 14px;
+                    line-height: 22px;
+                    box-shadow: 0 0 3px #aaa;
+                  }
+                  .count {
+                    width: 30px;
+                    padding-left: 5px;
+                    font-size: 13px;
+                    font-weight: bold;
+                    color: #777;
+                    text-align: left;
+                  }
+                }
+                
+              }
+            }
+            .created-date {
+              height: 16px;
+              width: 200px;
+              font-size: 13px;
+              color: #888;
+              text-align: center;
+              position: absolute;
+              bottom: 7px;
+              right: 0;
+            }
+            .status-table {
+              height: 120px;
+              width: 140px;
+              position: absolute;
+              top: -7px;
+              right: -145px;
+              a {
+                .now-state {
+                  background: #41B883;
+                  height: 120px;
+                  width: 120px;
+                  line-height: 120px;
+                  text-align: center;
+                  border-radius: 50%;
+                  margin: 0 auto;
+                  color: #f5f5f5;
+                  font-size: 18px;
+                  font-weight: bold;
+                  transition: all 0.2s;
+                  &:hover {
+                    box-shadow: 0 0 15px 2px #d4d4d4;
+                    transition: all 0.2s;
+                  }
+                }
+              }
+              .others-now-state {
+                background: #41B883;
+                height: 120px;
+                width: 120px;
+                line-height: 120px;
+                text-align: center;
+                border-radius: 50%;
+                margin: 0 auto;
+                color: #f5f5f5;
+                font-size: 18px;
+                font-weight: bold;
+                transition: all 0.2s;
+                &:hover {
+                  box-shadow: 0 0 15px 2px #d4d4d4;
+                  transition: all 0.2s;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.other-box {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 0.5px solid #ddd;
+  ul {
+    height: 100%;
+    display: flex;
+    li {
+      height: 100%;
+      width: 50px;
+      padding-top: 5px;
+      position: relative;
+      .check-good {
+        height: 50px;
+        width: 116px;
+        position: absolute;
+        left: -117px;
+        font-size: 13px;
+        color: #777;
+        font-weight: bold;
+        line-height: 50px;
+        text-align: center;
+      }
+      .like-orange {
+        .fa-thumbs-up {
+          height: 100%;
+          width: 100%;
+          font-size: 25px;
+          line-height: 50px;
+          text-align: center;
+          color: #e0245e;
+        }
+      }
+      .like-none {
+        a {
+          display: block;
+          .fa-thumbs-up {
+            height: 100%;
+            width: 100%;
+            font-size: 25px;
+            line-height: 50px;
+            text-align: center;
+          }
+        }
+      }
+      a {
+        display: block;
+        position: relative;
+        .fa-comment-dots {
+          height: 100%;
+          width: 100%;
+          font-size: 25px;
+          line-height: 50px;
+          text-align: center;
+        }
+        .a-comments {
+          height: 100%;
+          width: 100%;
+          font-size: 25px;
+          line-height: 50px;
+          text-align: center;
+        }
+        .notification-circle {
+          height: 20px;
+          width: 20px;
+          position: absolute;
+          top: 3px;
+          right: 3px;
+          border-radius: 50%;
+          background: #ff4500;
+          // background: #f02849;
+          &__count {
+            padding-left: 1px;
+            color: #fff;
+            font-size: 14px;
+            line-height: 21.5px;
+            text-align: center;
+          }
+          &__dots {
+            padding-left: 0.5px;
+            color: #fff;
+            font-size: 18px;
+            line-height: 20px;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}
+
+.adjustment-box {
+  width: 50px;
+}
+
+// .state-table {
+//   height: 260px;
+//   width: 30px;
+// }
+
+.side-ber {
+  background: pink;
+  height: 500px;
+  width: 300px;
+  z-index: 1;
+  position: absolute;
+  top: 262px;
+  right: 80px;
+}
+
+@media screen and (max-width: 1580px) {
+  .side-ber {
+    display: none;
+  }
+}

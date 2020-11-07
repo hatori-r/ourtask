@@ -1,0 +1,56 @@
+.title-bar
+  .title-box
+    .title-box-inner
+      .title-name
+        = link_to root_path do
+          .our-task our task
+        .our-task-icon
+          %input(id="hamburger" type="checkbox")
+          %label.fas.fa-share-alt(for="hamburger" class="hamburger-open")
+          %label(for="hamburger" class="hamburger-back")
+          %aside
+            %label(for="hamburger" class="hamburger-close")
+              %i.fas.fa-bars
+            %nav
+              .menu-list
+                - if user_signed_in?
+                  -if current_page?(root_path)
+                  - else
+                    = link_to "トップページ", root_path, class: "menu-list__toppage"
+                  = link_to "マイページ", user_path(current_user.id), method: :get, class: "menu-list__mypage"
+                  = link_to "シェアタスク", new_task_path, class: "menu-list__share-task"
+                  = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "menu-list__logout"
+                  .media-screen-footer
+                    .media-screen-footer__top
+                      Copyright
+                      %span.copyright © 
+                      2020 our task
+                    .media-screen-footer__low
+                      All Rights Reserved.
+                - else
+                  -if current_page?(root_path)
+                  - else
+                    = link_to "トップページ", root_path, class: "menu-list__toppage"
+                  = link_to "ログイン", new_user_session_path, class: "menu-list__login"
+                  = link_to "登録する", new_user_registration_path, class: "menu-list__signin"
+                  .menu-list__logout
+                  .media-screen-footer
+                    .media-screen-footer__top
+                      Copyright
+                      %span.copyright © 
+                      2020 our task
+                    .media-screen-footer__low
+                      All Rights Reserved.
+      - if user_signed_in?
+        %ul.user-sign-in
+          %li
+            %a#current_user.new(href="/users/#{current_user.id}")
+              %span#current_user.new= current_user.nickname
+          %li
+            = link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'log-out'
+      - else
+        %ul.user-sign-in
+          %li
+            = link_to "登録する", new_user_registration_path, class: 'new', id: 'up'
+          %li
+            = link_to "ログイン", new_user_session_path, class: 'log-in'

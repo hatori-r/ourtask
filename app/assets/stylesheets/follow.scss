@@ -1,0 +1,289 @@
+.follow-list {
+  background: #fff;
+  height: 100%;
+  min-height: 105px;
+  padding: 50px 60px;
+  border-radius: 7px;
+  border: 1px solid #eee;
+  margin-top: 20px;
+  box-shadow: 0 0 2px #aaa;
+  .followers-user-none,
+  .followings-user-none  {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    line-height: 100px;
+    p {
+      height: 100%;
+      font-weight: bold;
+      font-size: 20px;
+      font-family: "M PLUS Rounded 1c","メイリオ",Meiryo,sans-serif;
+      color: #777;
+    }
+    .fa-users {
+      width: 50px;
+      margin: 0;
+      line-height: 100px;
+      text-align: center;
+      font-size: 24px;
+      color: #777;
+    }
+  }
+  &__inner {
+    padding: 20px 10px;
+    padding: 25px 10px 15px 10px;
+    border-radius: 5px;
+    &:hover {
+      box-shadow: 0 0 3px #ccc;
+    }
+    .users-info {
+      height: 50px;
+      display: flex;
+      .users-image {
+        width: 50px;
+        display: grid;
+        place-items: center;
+        a {
+          display: block;
+          .image-a {
+            display: block;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+          }
+        }
+        a {
+          display: block;
+          .fa-user-circle {
+            display: grid;
+            place-items: center;
+            height: 50px;
+            width: 50px;
+            color: #ddd;
+            font-size: 35px;
+          }
+        }
+      }
+      .users-name {
+        width: 155px;
+        a {
+          display: block;
+          height: 100%;
+          padding-left: 25px;
+          font-size: 20px;
+          font-weight: bold;
+          line-height: 50px;
+          text-align: left;
+        }
+      }
+      .users-twitter {
+        padding-left: 5px;
+        width: 50px;
+        a {
+          height: 100%;
+          display: block;
+          .fa-twitter {
+            height: 50px;
+            width: 50px;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            color: #00acee;
+            transition: all 0.1s;
+            &:hover {
+              text-shadow: 1px 1px 5px #aaa;
+              transition: all 0.1s;
+            }
+          }
+        }
+        .none {
+          height: 50px;
+          width: 50px;
+          display: grid;
+          place-items: center;
+          font-size: 22px;
+          color: #eee;
+          &:hover {
+            text-shadow: none;
+          }
+        }
+      }
+      .users-facebook {
+        width: 50px;
+        padding-left: 5px;
+        a {
+          height: 100%;
+          display: grid;
+          place-items: center;
+          .fa-facebook {
+            height: 23px;
+            width: 23px;
+            border-radius: 50%;
+            font-size: 23px;
+            color: #1877f2;
+            transition: all 0.1s;
+            &:hover {
+              box-shadow: 0 0 7px #aaa;
+              transition: all 0.1s;
+            }
+          }
+        }
+        .none {
+          height: 50px;
+          width: 50px;
+          display: grid;
+          place-items: center;
+          font-size: 23px;
+          color: #eee;
+          &:hover {
+            text-shadow: none;
+          }
+        }
+      }
+      .users-instagram {
+        width: 50px;
+        padding-left: 5px;
+        a {
+          height: 100%;
+          display: block;
+          display: grid;
+          place-items: center;
+          .fa-instagram {
+            height: 23px;
+            width: 23px;
+            font-size: 23px;
+            background: linear-gradient(45deg, rgba(254,212,117,1) 0%,rgba(229,61,93,1) 50%,rgba(194,49,134,1) 70%,rgba(156,56,187,1) 100%);
+            border-radius: 7px;
+            color: #fff;
+            line-height: 23px;
+            font-weight: 400;
+            text-align: center;
+            transition: box-shadow 0.1s;
+            &:hover {
+              box-shadow: 1px 1px 5px #aaa;
+              transition: box-shadow 0.1s;
+            }
+          }
+        }
+        .none {
+          height: 50px;
+          width: 50px;
+          display: grid;
+          place-items: center;
+          font-size: 22px;
+          color: #eee;
+          &:hover {
+            box-shadow: none;
+          }
+        }
+      }
+      .users-site {
+        width: 50px;
+        padding-left: 5px;
+        a {
+          height: 100%;
+          display: block;
+          .fa-home {
+            height: 50px;
+            width: 50px;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+            color: #555;
+            transition: all 0.1s;
+            &:hover {
+              text-shadow: 1px 1px 5px #ccc;
+              transition: all 0.1s;
+            }
+          }
+        }
+        .none {
+          height: 50px;
+          width: 50px;
+          display: grid;
+          place-items: center;
+          font-size: 22px;
+          color: #ccc;
+          &:hover {
+            text-shadow: none;
+          }
+        }
+      }
+      .follow-select {
+        flex: 1;
+        &__unfollow-btn {
+          background: #fff;
+          height: 42px;
+          width: 142px;
+          display: block;
+          padding: 0 10px;
+          border: 1px solid #0095f6;
+          border-radius: 7px;
+          margin-top: 5px;
+          font-size: 16px;
+          color: #0095f6;
+          font-weight: bold;
+          line-height: 40px;
+          text-align: center;
+          outline: none;
+          cursor: pointer;
+          &:hover {
+            background: #fff;
+            border: 1px solid #ccc;
+            color: #333;
+            font-weight: lighter;
+            background: #efefef;
+          }
+        }
+        &__follow-btn {
+          background: #fff;
+          height: 42px;
+          width: 142px;
+          display: block;
+          padding: 0 10px;
+          border: 1px solid #ccc;
+          border-radius: 7px;
+          margin-top: 5px;
+          font-size: 16px;
+          line-height: 40px;
+          text-align: center;
+          outline: none;
+          cursor: pointer;
+          &:hover {
+            border: 1px solid #0095f6;
+            font-weight: bold;
+            color: #0095f6;
+          }
+        }
+      }
+    }
+    .users-info-lower {
+      height: 15px;
+      .user-follower {
+        display: flex;
+        .fa-check-circle {
+          display: block;
+          padding-right: 3px;
+          margin-left: 50px;
+          font-size: 14px;
+          line-height: 15px;
+          color: #32cd32;
+        }
+        p {
+          flex: 1;
+          font-size: 13px;
+          line-height: 15px;
+          font-family: "M PLUS Rounded 1c","メイリオ",Meiryo,sans-serif;
+        }
+      }
+    }
+  }
+}
+
+.tabContents {
+  display: none;
+}
+.tabContents.active {
+  display: block;
+}

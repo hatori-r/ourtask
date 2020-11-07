@@ -1,3 +1,349 @@
-// Place all the styles related to the comments controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.task-comment {
+  margin-top: 100px;
+}
+
+.counts-table {
+  background: #fff;
+  height: 120px;
+  width: calc(98% - 400px);
+  padding: 0 200px;
+  border-radius: 5px;
+  margin-top: -70px;
+  margin-left: 0;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 0 3px #bebebe;
+  .like-counts {
+    width: 160px;
+    display: flex;
+    padding: 30px 20px;
+    .like-circle-orange {
+      background: #e0245e;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      box-shadow: 0 0 5px #bbb;
+      a {
+        display: block;
+        i {
+          font-size: 21px;
+          color: #fff;
+          font-weight: bold;
+          line-height: 50px;
+          cursor: pointer;
+        }
+      }
+    }
+    .like-circle-none {
+      background: #eee;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      box-shadow: 0 0 5px #bbb;
+      a {
+        display: block;
+        i {
+          color: #fff;
+          line-height: 50px;
+          cursor: pointer;
+          &:hover {
+            color: #e0245e;
+            transition: color 0.1s;
+          }
+        }
+      }
+    }
+    .counts {
+      height: 50px;
+      width: 90px;
+      padding-right: 10px;
+      border-bottom: 1px solid #efefef;
+      font-size: 22px;
+      line-height: 60px;
+      text-align: right;
+    }
+  }
+  .comment-counts {
+    width: 160px;
+    display: flex;
+    padding: 30px 20px;
+    .comment-circle-zero {
+      background: #eee;
+      height: 50px;
+      width: 50px;
+      border: none;
+      border-radius: 50%;
+      outline: none;
+      box-shadow: 0 0 5px #bbb;
+      cursor: pointer;
+      i {
+        color: #fff;
+        line-height: 50px;
+      }
+    }
+    .comment-circle {
+      background: #64cffa;
+      height: 50px;
+      width: 50px;
+      border: none;
+      border-radius: 50%;
+      outline: none;
+      box-shadow: 0 0 5px #bbb;
+      cursor: pointer;
+      i {
+        color: #fff;
+        line-height: 50px;
+        &:hover {
+          text-shadow: 1px 1px 10px #ebebeb;
+          transition: text-shadow 0.1s;
+        }
+      }
+    }
+    .counts {
+      height: 50px;
+      width: 90px;
+      padding-right: 10px;
+      border-bottom: 1px solid #efefef;
+      font-size: 22px;
+      line-height: 60px;
+      text-align: right;
+    }
+  }
+}
+
+.container {
+  background: #fff;
+  height: 400px;
+  width: calc(98% - 80px);
+  padding: 40px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: 0;
+  margin-right: auto;
+  box-shadow: 0 0 3px #bebebe;
+  position: relative;
+  &__text-area {
+    height: 35px;
+    width: calc(93% - 40px);
+    padding: 5px 40px;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    box-shadow: 0 0 2px #bebebe;
+  }
+  &__submit {
+    background: none;
+    position: absolute;
+    top: 40px;
+    right: 70px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    color: #f5f5f5;
+    outline: none;
+    cursor: pointer;
+    i {
+      color: #ccc;
+      &:hover {
+        text-shadow: 1px 1px 1px #eee;
+        transition: color 0.3s;
+      }
+    }
+  }
+  .ask-for-login {
+    &__upper {
+      font-size: 16px;
+    }
+  }
+}
+
+.comments {
+  height: 320px;
+  margin-top: 30px;
+  overflow: auto;
+  &__comment {
+    height: 56px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    display: flex;
+    .owner {
+      display: flex;
+      margin-right: 0;
+      margin-left: auto;
+      &__owner-comment {
+        height: 40px;
+        .a-comment {
+          // background: #86ffc2;
+          // background: #41b883;
+          // background: #55c500;
+          // background: #a7ec72;
+          background: #baf190;
+          padding: 0 20px;
+          border-radius: 50px;
+          font-size: 16px;
+          color: #333;
+          // color: #fff;
+          line-height: 40px;
+          cursor: pointer;
+        }
+        .remove-comment {
+          a {
+            height: 16px;
+            width: 40px;
+            display: block;
+            padding: 0 20px;
+            margin: 0 0 0 auto;
+            font-size: 12.5px;
+            text-align: center;
+            font-weight: bold;
+            color: #fd5959;
+          }
+        }
+      }
+      &__owner-info {
+        height: 40px;
+        min-width: 100px;
+        display: flex;
+        position: relative;
+        .user-name {
+          display: block;
+          height: 40px;
+          padding: 0 10px;
+          font-size: 16px;
+          letter-spacing: 0.05em;
+          line-height: 40px;
+        }
+        .image-a {
+          display: block;
+          padding: 5px;
+          .user-icon {
+            display: block;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+          }
+        }
+        .icon-a {
+          display: block;
+          .fa-user-circle {
+            height: 40px;
+            width: 40px;
+            color: #ddd;
+            font-size: 24px;
+            text-align: center;
+            line-height: 41px;
+          }
+        }
+        .post-date {
+          height: 14.5px;
+          width: 100px;
+          position: absolute;
+          left: 0;
+          bottom: -15.5px;
+          font-size: 12px;
+          color: #777;
+          line-height: 16px;
+        }
+      }
+    }
+    .other-user {
+      margin-right: auto;
+      margin-left: 0;
+      display: flex;
+      &__users-info {
+        height: 40px;
+        min-width: 100px;
+        display: flex;
+        position: relative;
+        .image-a {
+          display: block;
+          padding: 5px;
+          .user-icon {
+            display: block;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+          }
+        }
+        .icon-a {
+          display: block;
+          .fa-user-circle {
+            height: 40px;
+            width: 40px;
+            color: #ddd;
+            font-size: 24px;
+            text-align: center;
+            line-height: 40px;
+          }
+        }
+        .user-name {
+          display: block;
+          height: 40px;
+          padding: 0 10px;
+          font-size: 16px;
+          letter-spacing: 0.05em;
+          line-height: 40px;
+        }
+        .post-date {
+          height: 14.5px;
+          width: 100px;
+          position: absolute;
+          right: 0;
+          bottom: -15.5px;
+          font-size: 12px;
+          color: #777;
+          line-height: 16px;
+        }
+        }
+        &__users-comment {
+          height: 40px;
+          .a-comment {
+            background: #f1f1f1;
+            padding: 0 20px;
+            border-radius: 50px;
+            line-height: 40px;
+            font-size: 16px;
+            cursor: pointer;
+          }
+          .remove-comment {
+            height: 16px;
+            a {
+              height: 100%;
+              width: 80px;
+              display: block;
+              margin: 0 auto 0 0;
+              font-size: 12px;
+              text-align: center;
+              font-weight: bold;
+              color: #fd5959;
+          }
+        }
+      }
+    }
+  }
+}
+
+.return-top {
+  display: block;
+  background: #35495E;
+  height: 50px;
+  width: 160px;
+  border-radius: 50px;
+  margin: 0 auto;
+  margin-top: 15px;
+  color: #f5f5f5;
+  font-weight: bold;
+  font-family: "M PLUS Rounded 1c","メイリオ",Meiryo,sans-serif;
+  line-height: 50px;
+  text-align: center;
+  transition: all 0.2s;
+  &:hover {
+    background: #374c63;
+    font-size: 18.5px;
+    box-shadow: 0 0 10px 3px silver;
+    transition: all 0.2s;
+  }
+}

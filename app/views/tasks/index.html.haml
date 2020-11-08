@@ -4,7 +4,7 @@
     %ul
       - if user_signed_in?
         %li
-          = link_to "タスクをシェア", "/tasks/new", class: "post-task"
+          = link_to "タスクを投稿", "/tasks/new", class: "post-task"
         %li
           = link_to "マイページ", "/users/#{current_user.id}", class: "my-page"
       - else

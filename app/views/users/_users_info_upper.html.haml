@@ -54,19 +54,19 @@
         .info-right__sns
           .twitter
             - if @user.twitter?
-              = link_to @user.twitter do
+              = link_to @user.twitter, rel: "noopener noreferrer", target: :_blank do
                 %i.fab.fa-twitter
             - else
               %i.fab.fa-twitter.none
           .facebook
             - if @user.facebook?
-              = link_to @user.facebook do
+              = link_to @user.facebook, rel: "noopener noreferrer", target: :_blank do
                 %i.fab.fa-facebook
             - else
               %i.fab.fa-facebook.none
           .instagram
             - if @user.instagram?
-              = link_to @user.instagram do
+              = link_to @user.instagram, rel: "noopener noreferrer", target: :_blank do
                 %i.fab.fa-instagram
             - else
               %i.fab.fa-instagram.none
@@ -77,7 +77,7 @@
               %i.fas.fa-home.none
           .mysite
             - if @user.site?
-              = link_to @user.site do
+              = link_to @user.site, rel: "noopener noreferrer", target: :_blank do
                 = @user.site
             - else
               .nil_date

@@ -1,1 +1,25 @@
-%h1 やあ
+= render partial: "welcome"
+.tasks
+  .main-table
+    %ul
+      - if user_signed_in?
+        %li
+          = link_to "タスクをシェア", "/tasks/new", class: "post-task"
+        %li
+          = link_to "マイページ", "/users/#{current_user.id}", class: "my-page"
+      - else
+        %li
+          = link_to "ログイン", new_user_session_path, class: "post-task"
+        %li
+          = link_to "登録する", new_user_registration_path, class: "my-page"
+  = form_with(url: tasks_searches_path, local: true, method: :get, class: "search-form") do |f|
+    .search-inner
+      = f.text_field :keyword, placeholder: "タスクを検索", class: "search-input"
+      = f.button type: "submit", style: 'border-style: none;', class: "search-btn" do
+        %i.fas.fa-search
+  .sort-box
+  - @tasks.each do |t|
+    = render partial: "task", locals: { t: t }
+  = paginate(@tasks)
+-# .side-ber
+-#   開発段階

@@ -1,0 +1,106 @@
+.tasks-table
+  .task-user
+    %ul
+      %li
+        - if like.task.user.image?
+          = link_to "/users/#{like.task.user.id}", class: "image-a" do
+            = image_tag like.task.user.image.url, class: "user-icon", id: "img_prev"
+        - else
+          = link_to "/users/#{like.task.user.id}", class: "icon-a" do
+            %i.far.fa-user-circle
+      %li
+        %a.user-mame{href: "/users/#{like.task.user.id}"}
+          %span.user-name= like.task.user.nickname
+      - if user_signed_in? && current_user.id == like.task.user.id
+        %li.details
+          = link_to '…', "/tasks/#{like.task.id}/edit"
+      - else
+        %li.details
+          .details-none
+            …
+  .tasks-box
+    .limit-box
+      .limit-upper
+        .limit リミット
+      .limit-lower
+        .limit-date= like.task.limit_date
+    .task-box
+      .task-upper
+        .task タスク
+        .task-data
+          .task-data-inner= simple_format(like.task.task)
+          .notification
+            .notification__likes
+              - if like.task.likes.size == 0
+              - else
+                - if user_signed_in?
+                  - if current_user.already_liked?(like.task)
+                    = link_to task_like_path(id: like.task.id, task_id: like.task.id), method: :delete do
+                      %i.far.fa-thumbs-up
+                      %p.count= like.task.likes.size
+                  - else
+                    = link_to task_likes_path(id: like.task.id, task_id: like.task.id), method: :post do
+                      %i.far.fa-thumbs-up
+                      %p.count= like.task.likes.size
+                - else
+                  = link_to new_user_session_path do
+                    %i.far.fa-thumbs-up
+                    %p.count= like.task.likes.size
+            .notification__comments
+              - if like.task.comments.size == 0
+              - else
+                = link_to "/tasks/#{like.task.id}" do
+                  %i.far.fa-comment-dots
+                  - if like.task.comments.size <= 99
+                    %p.count= like.task.comments.size
+                  - else
+                    %p.count +99
+          .created-date= like.task.created_at.to_s(:datetime)
+          - if user_signed_in? && current_user.id == like.task.user.id
+            .status-table
+              %a(href="/tasks/#{like.task.id}/edit")
+                .now-state= like.task.state
+          - else
+            .status-table
+              .others-now-state= like.task.state
+  .other-box
+    %ul
+      - if user_signed_in?
+        - if current_user.already_liked?(like.task)
+          %li
+            .like-orange
+              = link_to task_like_path(id: like.task.id, task_id: like.task.id), id: "like_btn", method: :delete do
+                -# -----↓非同期処理の記述↓-----
+                -# = link_to task_like_path(id: t.id, task_id: t.id), method: :delete, remote: true do
+                -# -----↑非同期処理の記述↑-----
+                %i.far.fa-thumbs-up
+        - else
+          %li
+            .like-none
+              = link_to task_likes_path(id: like.task.id, task_id: like.task.id), method: :post do
+                -# -----↓非同期処理の記述↓-----
+                -# = link_to task_likes_path(id: t.id, task_id: t.id), method: :post, remote: true do
+                -# -----↑非同期処理の記述↑-----
+                %i.far.fa-thumbs-up
+      - else
+        %li
+          .like-none
+            = link_to new_user_session_path do
+              %i.far.fa-thumbs-up
+      %li
+        - if like.task.comments.size == 0
+          %a(href="/tasks/#{like.task.id}")
+            %i.far.fa-comment-dots
+        - else
+          %a(href="/tasks/#{like.task.id}")
+            %i.far.fa-comment-dots.a-comments
+            - if user_signed_in? && current_user.id == like.task.user.id
+              .notification-circle
+                - if like.task.comments.size <= 9
+                  .notification-circle__count
+                    = like.task.comments.size
+                - else
+                  .notification-circle__dots
+                    ・
+            - else
+    .adjustment-box

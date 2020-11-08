@@ -1,0 +1,68 @@
+.follow-list__inner
+  .users-info
+    .users-image
+      - if f.image?
+        = link_to user_path(f.id), method: :get do
+          = image_tag f.image.url, class: "image-a"
+      - else
+        = link_to user_path(f.id), method: :get do
+          %i.far.fa-user-circle
+    .users-name
+      = link_to user_path(f.id), method: :get do
+        = f.nickname
+    .users-twitter
+      - if f.twitter?
+        = link_to f.twitter do
+          %i.fab.fa-twitter
+      - else
+        %i.fab.fa-twitter.none
+    .users-facebook
+      - if f.facebook?
+        = link_to f.facebook do
+          %i.fab.fa-facebook
+      - else
+        %i.fab.fa-facebook.none
+    .users-instagram
+      - if f.instagram?
+        = link_to f.instagram do
+          %i.fab.fa-instagram
+      - else
+        %i.fab.fa-instagram.none
+    .users-site
+      - if f.site?
+        = link_to f.site do
+          %i.fas.fa-home
+      - else
+        %i.fas.fa-home.none
+    .follow-select
+      - if user_signed_in?
+        - if user_signed_in? && f == current_user
+        - else
+          - if current_user.following?(f)
+            = form_for(current_user.relationships.find_by(follow_id: f.id), html: { method: :delete }) do |t|
+              = t.hidden_field :follow_id, value: f.id
+              = t.button type: "submit", class: 'follow-select__unfollow-btn' do
+                フォロー中
+          - else
+            = form_for(current_user.relationships.build) do |t|
+              = t.hidden_field :follow_id, value: f.id
+              = t.button type: "submit", class: 'follow-select__follow-btn' do
+                フォロー
+          -# -----メモ-----
+          -#   = link_to "フォロー中", relationship_path(@user.id), method: :delete, class: "follow-select__unfollow-btn"
+          -# - else
+          -#   = link_to "フォロー", relationships_path(@user.id), method: :post, class: "follow-select__follow-btn"
+          -# -----メモ-----
+      - else
+        = link_to "フォロー", new_user_session_path, class: "follow-select__follow-btn"
+  .users-info-lower
+    - if user_signed_in?
+      - unless current_user == f
+        - if current_user.followers?(f)
+          .user-follower
+            %i.far.fa-check-circle
+            %p フォローされています
+
+      -# .user-follower
+      -#   %i.far.fa-check-circle
+      -#   %p フォローされています

@@ -1,0 +1,33 @@
+.users
+  = render partial: "users_info_upper"
+  .users__low
+    .select-tabs
+      .inner-tabs.tab
+        %a.task-tab.active(href="#tab6")
+          フォロー中
+          (
+          = @user.followings.count
+          人)
+        %a.like-tab(href="#tab5")
+          フォロワー
+          (
+          = @user.followers.count
+          人)
+  #tab6.follow-list.tabContents.active
+    - if @user.followings.count == 0
+      .followings-user-none
+        %p
+          まだフォローしているユーザーはいません
+          %i.fas.fa-users
+    - else
+      - @user.followings.each do |f|
+        = render partial: "users_follow", locals: { f: f }
+  #tab5.follow-list.tabContents
+    - if @user.followers.count == 0
+      .followers-user-none
+        %p
+          まだフォロワーはいません
+          %i.fas.fa-users
+    -else
+      - @user.followers.each do |f|
+        = render partial: "users_follow", locals: { f: f }

@@ -1,0 +1,113 @@
+.users__top
+  .user-info
+    .user-info__left
+      .profile-image
+        - if @user.image?
+          = image_tag @user.image.url
+        - else
+          %i.far.fa-user-circle
+    .user-info__center
+    .user-info__right
+      .info-right
+        .info-right__name
+          .name
+            = link_to user_path(@user.id), method: :get do
+              = @user.nickname
+          .edit
+            - if user_signed_in? && @user == current_user
+              = link_to edit_user_path(current_user) do
+                %i.fas.fa-user-cog
+                %p
+                  プロフィール編集
+            - else
+              - if user_signed_in?
+                - unless current_user == @user
+                  - if current_user.following?(@user)
+                    = form_for(current_user.relationships.find_by(follow_id: @user.id), html: { method: :delete }) do |f|
+                      = f.hidden_field :follow_id, value: @user.id
+                      = f.button type: "submit", class: 'follow-now' do
+                        %p
+                          フォロー中
+                        %i.fas.fa-user-check
+                  - else
+                    = form_for(current_user.relationships.build) do |f|
+                      = f.hidden_field :follow_id, value: @user.id
+                      = f.button type: "submit", class: 'following' do
+                        %p
+                          フォロー
+                        %i.fas.fa-user-plus
+              - else
+                %button{class: 'following'}
+                  = link_to user_session_path do
+                    %p
+                      フォロー
+                    %i.fas.fa-user-plus
+        .info-right__follow-info
+          - if user_signed_in?
+            - unless current_user == @user
+              - if current_user.followers?(@user)
+                .user-follower
+                  %i.far.fa-check-circle
+                  %p フォローされています
+              - else
+          - else
+        .info-right__sns
+          .twitter
+            - if @user.twitter?
+              = link_to @user.twitter do
+                %i.fab.fa-twitter
+            - else
+              %i.fab.fa-twitter.none
+          .facebook
+            - if @user.facebook?
+              = link_to @user.facebook do
+                %i.fab.fa-facebook
+            - else
+              %i.fab.fa-facebook.none
+          .instagram
+            - if @user.instagram?
+              = link_to @user.instagram do
+                %i.fab.fa-instagram
+            - else
+              %i.fab.fa-instagram.none
+          .mysite-logo
+            - if @user.site?
+              %i.fas.fa-home
+            - else
+              %i.fas.fa-home.none
+          .mysite
+            - if @user.site?
+              = link_to @user.site do
+                = @user.site
+            - else
+              .nil_date
+                web site
+        .info-right__follow
+          .task-count
+            - if current_page?(user_path)
+              = link_to "#task-list", class: "move_tasks-list" do
+                タスク
+                %b= @user.tasks.count
+                件
+            - else
+              = link_to user_path(@user.id), method: :get, class: "move_tasks-list" do
+                タスク
+                %b= @user.tasks.count
+                件
+          .following
+            = link_to following_user_path(@user) do
+              フォロー中
+              %b= @user.followings.count
+              人
+          .follower
+            = link_to followers_user_path(@user) do
+              フォロワー
+              %b= @user.followers.count
+              人
+        .info-right__profile
+          .introduce
+            - if @user.profile?
+              = simple_format(@user.profile)
+            - else
+              .nil_date
+                profile

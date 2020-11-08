@@ -1,0 +1,132 @@
+.task-comment
+  #comment-area.tasks
+    .tasks-table
+      .task-user
+        %ul
+          %li
+            - if @task.user.image?
+              = link_to "/users/#{@task.user.id}", class: "image-a" do
+                = image_tag @task.user.image.url, class: "user-icon", id: "img_prev"
+            - else
+              = link_to "/users/#{@task.user.id}", class: "icon-a" do
+                %i.far.fa-user-circle
+          %li
+            %a.user-name{href: "/users/#{@task.user.id}"}
+              %span.user-name= @task.user.nickname
+          - if user_signed_in? && current_user.id == @task.user.id
+            %li.details
+              = link_to "…", "/tasks/#{@task.id}/edit"
+          - else
+            %li.details
+              .details-none
+                …
+      .tasks-box
+        .limit-box
+          .limit-upper
+            .limit LIMIT
+          .limit-lower
+            .limit-date= @task.limit_date
+        .task-box
+          .task-upper
+            .task TASK
+            .task-data
+              .task-data-inner= simple_format(@task.task)
+              .created-date= @task.created_at.to_s(:datetime)
+              - if user_signed_in? && current_user.id == @task.user.id
+                .status-table
+                  %a(href="/tasks/#{@task.id}/edit")
+                    .now-state= @task.state
+              - else
+                .status-table
+                  .others-now-state= @task.state
+    .counts-table
+      .like-counts
+        - if user_signed_in?
+          - if current_user.already_liked?(@task)
+            .like-circle-orange
+              = link_to task_like_path(@task), id: "like_btn", method: :delete do
+                -# -----↓非同期処理の記述↓-----
+                -# = link_to task_like_path(@task), method: :delete, remote: true do
+                -# -----↑非同期処理の記述↑-----
+                %i.far.fa-thumbs-up
+          - else
+            .like-circle-none
+              = link_to task_likes_path(@task), id: "like_btn", method: :post do
+                -# -----↓非同期処理の記述↓-----
+                -# = link_to task_likes_path(@task), method: :post, remote: true do
+                -# -----↑非同期処理の記述↑-----
+                %i.far.fa-thumbs-up
+        - else
+          .like-circle-none
+            = link_to new_user_session_path do
+              %i.far.fa-thumbs-up
+
+        .counts
+          = @task.likes.size
+      .comment-counts
+        - if @task.comments.size == 0
+          %a.comment-circle-zero(href="#comment-area")
+            %i.far.fa-comment-dots
+        - else
+          %a.comment-circle(href="#comment-area")
+            %i.far.fa-comment-dots
+        .counts
+          = @task.comments.size
+
+    .container.comments-container
+      - if current_user
+        = form_with(model: [@task, @comment], local: true) do |f|
+          = f.text_field :text, placeholder: "コメントを入力", rows: "2", class: "container__text-area", required: ""
+          = f.button type: "submit", class: "container__submit" do
+            %i.far.fa-paper-plane
+      - else
+        .ask-for-login
+          %p.ask-for-login__upper コメントをするにはログインもしくはアカウント登録が必要です
+          .ask-for-login__lower
+            %i.fas.fa-sign-in-alt
+        .login-form
+          = link_to "Sign up", new_user_registration_path, class: "signin_from_show"
+          = link_to "Log in", new_user_session_path, class: "login_from_show"
+
+      .comments
+        - @comments.each do |c|
+          .comments__comment
+            -# - if c.user_id == c.task_id
+            - if @task.user_id == c.user.id
+              .owner
+                .owner__owner-comment
+                  .a-comment
+                    = c.text
+                  .remove-comment
+                    - if user_signed_in? && c.user.id == current_user.id
+                      = link_to task_comment_path(task_id: @task, id: c.id), method: :delete, data: { confirm: '本当に削除しますか？' } do
+                        削除
+                .owner__owner-info
+                  = link_to c.user.nickname, "/users/#{c.user_id}", class: "user-name"
+                  - if c.user.image?
+                    = link_to "/users/#{c.user.id}", class: "image-a" do
+                      = image_tag c.user.image.url, class: "user-icon", id: "img_prev"
+                  - else
+                    = link_to "/users/#{c.user.id}", class: "icon-a" do
+                      %i.far.fa-user-circle
+                  .post-date= c.created_at.to_s(:datetime)
+            - else
+              .other-user
+                .other-user__users-info
+                  - if c.user.image?
+                    = link_to "/users/#{c.user.id}", class: "image-a" do
+                      = image_tag c.user.image.url, class: "user-icon", id: "img_prev"
+                  - else
+                    = link_to "/users/#{c.user.id}", class: "icon-a" do
+                      %i.far.fa-user-circle
+                  = link_to c.user.nickname, "/users/#{c.user_id}", class: "user-name"
+                  .post-date= c.created_at.to_s(:datetime)
+                .other-user__users-comment
+                  .a-comment
+                    = c.text
+                  .remove-comment
+                    - if user_signed_in? && c.user.id == current_user.id
+                      = link_to task_comment_path(task_id: @task, id: c.id), method: :delete, data: { confirm: '本当に削除しますか？' } do
+                        削除
+    .top-page
+      = link_to "トップページ", "/", class: "return-top"

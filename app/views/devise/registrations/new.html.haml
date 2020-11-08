@@ -1,0 +1,26 @@
+.welcome
+  our task へようこそ！
+.contents.row
+  .container
+    %h2.sign-up 登録してタスクをシェアしてみましょう
+    .container__inner
+      = form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
+        = devise_error_messages!
+        .field
+          %em ニックネーム (最大8文字まで)
+          = f.text_field :nickname, autofocus: true, maxlength: "8", id: "nickname", placeholder: "ニックネームを入力"
+        .field
+          %em メールアドレス
+          = f.email_field :email, placeholder: "メールアドレスを入力"
+        .field
+          %em パスワード
+          - if @validatable
+            %em
+              (#{@minimum_password_length} characters minimum)
+          = f.password_field :password, autocomplete: "off", placeholder: "パスワードを入力"
+        .field
+          %em 確認用パスワード
+          = f.password_field :password_confirmation, autocomplete: "off", placeholder: "確認用パスワードを入力"
+        .bottom-space
+        .actions
+          = f.submit "登録する"

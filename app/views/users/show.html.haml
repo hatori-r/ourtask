@@ -1,0 +1,43 @@
+.users
+  = render partial: "users_info_upper"
+  #task-list.users__low
+    .select-tabs
+      .inner-tabs.tab
+        %a.task-tab.active(href="#tab1")
+          = @user.nickname
+          さんのタスク
+          (
+          = @user.tasks.size
+          件)
+        %a.like-tab(href="#tab2")
+          いいねしたタスク
+          (
+          = @user.like.size
+          件)
+    #tab1.tasks.user-tasks.tabContents.active
+      - if @user.tasks.size == 0
+        .task-zero
+          %p
+            タスクがありません
+          %i.fas.fa-tasks
+        - if user_signed_in? && @user == current_user
+          .post-task
+            = link_to "タスクをシェアする", new_task_path, class: "post-task__btn"
+      - else
+        - @tasks.each do |t|
+          = render partial: "tasks/task", locals: { t: t }
+        = paginate(@tasks)
+    #tab2.tasks.like-tasks.tabContents
+      - if @user.like.size == 0
+        .like-zero
+          %p
+            いいねしたタスクはありません
+          %i.fas.fa-tasks
+        .watching-tasks
+          = link_to "タスクを見に行く", root_path, class: "watching-tasks__btn"
+      - else
+        - @likes.each do |like|
+          = render partial: "users/like_tasks", locals: { like: like }
+        = paginate(@likes)
+    .top-page
+      = link_to "トップページ", "/", class: "return-top"

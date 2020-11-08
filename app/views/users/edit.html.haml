@@ -1,0 +1,69 @@
+.contents.row
+  .container
+    .container-inner
+      = form_with model: @user, local: true do |f|
+        .inner-info
+          .inner-info__nav
+            .user-edit_tabs.tab
+              %a.basic-info-tab.active(href="#tab3")
+                基本情報
+              %a.sns-account-tab(href="#tab4")
+                SNS・ウェブサイト
+          #tab3.inner-info__main.tabContents.active
+            .user-image
+              .user-image__left
+                - if @user.image?
+                  = image_tag @user.image.url, style: "height: 150px; width: 150px; border-radius: 50%;", id: "img_prev"
+                - else
+                  %i.far.fa-user-circle
+              .user-image__right
+                %label
+                  .dipslay-hidden
+                    = f.file_field :image, accept: 'image/jpeg, image/gif, image/png', id: "user_img"
+                  .select-image
+                    プロフィール写真を変更
+            .user-nickname
+              .user-nickname__left
+                ニックネーム
+              .user-nickname__right
+                = f.text_field :nickname, maxlength: "8"
+            .user-email
+              .user-email__left
+                メールアドレス
+              .user-email__right
+                = f.email_field :email
+            .user-profile
+              .user-profile__left
+                プロフィール
+              .user-profile__right
+                = f.text_area :profile
+          #tab4.inner-info__sub.tabContents
+            .twitter-account
+              .twitter-account__left
+                Twitter
+              .twitter-account__right
+                = f.text_field :twitter, placeholder: "https://twitter.com/(アカウント名)"
+            .facebook-account
+              .facebook-account__left
+                Facebook
+              .facebook-account__right
+                = f.text_field :facebook, placeholder: "https://www.facebook.com/profile.php?(IDが入ります)"
+            .instagram-account
+              .instagram-account__left
+                Instagram
+              .instagram-account__right
+                = f.text_field :instagram, placeholder: "https://www.instagram.com/(アカウント名)"
+            .user-site
+              .user-site__left
+                ウェブサイト
+              .user-site__right
+                = f.text_field :site
+            .introduce
+              .introduce__sns
+                ・各SNSのリンクはマイページのリンクを貼り付けてください
+              .introduce__mysite
+                ・ウェブサイトにはあなたのウェブサイトやブログサイトなど自由に貼り付けることが出来ます
+          .inner-info__aside
+        .user-submit
+          = f.submit "更新", class: "user-submit__btn"
+          = link_to "もどる", user_path(current_user), class: "return-mypage"

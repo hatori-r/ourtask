@@ -1,0 +1,20 @@
+.contents.row
+  .container
+    .container-inner
+      = form_with(model: @task, local: true) do |f|
+        .posting-task
+          タスクをシェア
+        .posting-task__task-content
+          = f.text_area :task, placeholder: "taskを入力してください" , required: ""
+        .posting-task__info-bar
+          .state
+            ステータス
+          .limit
+            リミット
+        .posting-task__input-task
+          .input-state
+            = f.select :state, Task.states.keys, { required: "" }
+          .input-limit
+            = f.date_field :limit_date, required: ""
+        .posting-task__submit
+          = f.submit "シェア" 

@@ -1,0 +1,110 @@
+.tasks-table
+  .task-user
+    %ul
+      %li
+        - if t.user.image?
+          = link_to "/users/#{t.user.id}", class: "image-a" do
+            = image_tag t.user.image.url, class: "user-icon", id: "img_prev"
+        - else
+          = link_to "/users/#{t.user.id}", class: "icon-a" do
+            %i.far.fa-user-circle
+      %li
+        %a.user-mame{href: "/users/#{t.user.id}"}
+          %span.user-name= t.user.nickname
+      - if user_signed_in? && current_user.id == t.user.id
+        %li.details
+          = link_to '…', edit_task_path(t)
+      - else
+        %li.details
+          .details-none
+            …
+  .tasks-box
+    .limit-box
+      .limit-upper
+        .limit リミット
+      .limit-lower
+        .limit-date= t.limit_date
+    .task-box
+      .task-upper
+        .task タスク
+        .task-data
+          = link_to task_path(t), method: :get do
+            .task-data-inner= simple_format(t.task)
+          .notification
+            .notification__likes
+              - if t.likes.size == 0
+              - else
+                - if user_signed_in?
+                  - if current_user.already_liked?(t)
+                    = link_to task_like_path(id: t.id, task_id: t.id), method: :delete do
+                      %i.far.fa-thumbs-up
+                      %p.count= t.likes.size
+                  - else
+                    = link_to task_likes_path(id: t.id, task_id: t.id), method: :post do
+                      %i.far.fa-thumbs-up
+                      %p.count= t.likes.size
+                - else
+                  = link_to new_user_session_path do
+                    %i.far.fa-thumbs-up
+                    %p.count= t.likes.size
+            .notification__comments
+              - if t.comments.size == 0
+              - else
+                = link_to "/tasks/#{t.id}" do
+                  %i.far.fa-comment-dots
+                  - if t.comments.size <= 99
+                    %p.count= t.comments.size
+                  - else
+                    %p.count +99
+          .created-date= t.created_at.to_s(:datetime)
+          - if user_signed_in? && current_user.id == t.user.id
+            .status-table
+              = link_to edit_task_path(t) do
+                .now-state= t.state
+          - else
+            .status-table
+              = link_to task_path(t), method: :get do
+                .others-now-state= t.state
+  .other-box
+    %ul
+      - if user_signed_in?
+        - if current_user.already_liked?(t)
+          %li
+            .check-good
+              いいねをしています
+            .like-orange
+              = link_to task_like_path(id: t.id, task_id: t.id), id: "like_btn", method: :delete do
+                -# -----↓非同期処理の記述↓-----
+                -# = link_to task_like_path(id: t.id, task_id: t.id), method: :delete, remote: true do
+                -# -----↑非同期処理の記述↑-----
+                %i.far.fa-thumbs-up
+        - else
+          %li
+            .like-none
+              = link_to task_likes_path(id: t.id, task_id: t.id), method: :post do
+                -# -----↓非同期処理の記述↓-----
+                -# = link_to task_likes_path(id: t.id, task_id: t.id), method: :post, remote: true do
+                -# -----↑非同期処理の記述↑-----
+                %i.far.fa-thumbs-up
+      - else
+        %li
+          .like-none
+            = link_to new_user_session_path do
+              %i.far.fa-thumbs-up
+      %li
+        - if t.comments.size == 0
+          = link_to task_path(t), method: :get do
+            %i.far.fa-comment-dots
+        - else
+          = link_to task_path(t), method: :get do
+            %i.far.fa-comment-dots.a-comments
+            - if user_signed_in? && current_user.id == t.user.id
+              .notification-circle
+                - if t.comments.size <= 9
+                  .notification-circle__count
+                    = t.comments.size
+                - else
+                  .notification-circle__dots
+                    ・
+            - else
+    .adjustment-box

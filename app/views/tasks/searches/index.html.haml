@@ -1,0 +1,10 @@
+.tasks
+  = form_with(url: tasks_searches_path, local: true, method: :get, class: "search-form") do |f|
+    .search-inner
+      = f.text_field :keyword, placeholder: "タスクを検索", class: "search-input"
+      = f.button type: "submit", style: 'border-style: none;', class: "search-btn" do
+        %i.fas.fa-search
+  .contents-row
+    - @tasks.each do |t|
+      = render partial: "tasks/task", locals: { t: t }
+    = paginate(@tasks)

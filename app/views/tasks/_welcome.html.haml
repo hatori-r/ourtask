@@ -1,0 +1,30 @@
+- if user_signed_in?
+  .first-access-hidden(style="display: none;")
+- else
+  .first-wapper
+    .first-access-wapper
+      .wapper-left
+        = image_tag asset_path("/images/Calendar_PNG.png"), style: "height: 120px; width: 90px;", class: "calender"
+        = image_tag asset_path("/images/Books_PNG.png"), style: "height: 90px; width: 80px;", class: "books"
+        = image_tag asset_path("/images/Degital_marketing_PNG.png"), style: "height: 120px; width: 120px;", class: "marketing"
+      .wapper-center
+        .first-access
+          .first-access__upper
+            .greeting
+              .greeting__top
+                ようこそ！
+              .greeting__mid
+                our taskへ
+          .first-access__mid
+            .introduction
+              .introduction__top
+                our taskではあなたのタスクをシェアできます
+              .introduction__mid
+                あなたのタスクを他のユーザーに共有して
+              .introduction__low
+                リミットまでに達成しましょう！
+          .first-access__low
+            = link_to  "our task をはじめる", new_user_registration_path, class: "first-access-btn"
+      .wapper-right
+        = image_tag asset_path("/images/fitness_PNG.png"), style: "height: 100px; width: 100px;", class: "fitness"
+        = image_tag asset_path("/images/app_development_PNG.png"), style: "height: 150px; width: 150px;", class: "computer"

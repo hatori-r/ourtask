@@ -51,5 +51,5 @@ production:
   <<: *default
   database: ourtask_production
   username: root
-  password: <%= ENV['OURTASK_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   socket: /var/lib/mysql/mysql.sock

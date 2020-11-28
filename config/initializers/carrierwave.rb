@@ -15,7 +15,7 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1'
     }
 
-    config.fog_directory  = 'ourtask-2020-3'
+    config.fog_directory = 'ourtask-2020-3'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/ourtask-2020-3'
   end
 end
